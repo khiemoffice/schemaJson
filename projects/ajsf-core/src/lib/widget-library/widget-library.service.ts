@@ -17,7 +17,6 @@ import { SelectComponent } from './select.component';
 import { SelectFrameworkComponent } from './select-framework.component';
 import { SelectWidgetComponent } from './select-widget.component';
 import { SubmitComponent } from './submit.component';
-import { TabsComponent } from './tabs.component';
 import { TemplateComponent } from './template.component';
 import { TextareaComponent } from './textarea.component';
 
@@ -95,7 +94,6 @@ export class WidgetLibraryService {
     'array': 'section', // A list you can add, remove and reorder <fieldset>
     'tabarray': 'tabs', // A tabbed version of array
     'tab': 'section', // A tab group, similar to a fieldset or section <fieldset>
-    'tabs': TabsComponent, // A tabbed set of panels with different controls
     'message': MessageComponent, // Insert arbitrary html
     'help': 'message', // Insert arbitrary html
     'msg': 'message', // Insert arbitrary html

@@ -17,7 +17,7 @@ import { SelectFrameworkComponent } from './select-framework.component';
 import { SelectWidgetComponent } from './select-widget.component';
 import { SubmitComponent } from './submit.component';
 import { TabComponent } from './tab.component';
-import { TabsComponent } from './tabs.component';
+// import { TabsComponent } from './tabs.component';
 import { TemplateComponent } from './template.component';
 import { TextareaComponent } from './textarea.component';
 
@@ -26,7 +26,7 @@ export const BASIC_WIDGETS = [
   CheckboxesComponent, FileComponent, HiddenComponent, InputComponent,
   MessageComponent, NoneComponent, NumberComponent, RadiosComponent,
   RootComponent, SectionComponent, SelectComponent, SelectFrameworkComponent,
-  SelectWidgetComponent, SubmitComponent, TabComponent, TabsComponent,
+  SelectWidgetComponent, SubmitComponent, TabComponent,
   TemplateComponent, TextareaComponent
 ];
 
@@ -50,7 +50,6 @@ export { SelectFrameworkComponent } from './select-framework.component';
 export { SelectWidgetComponent } from './select-widget.component';
 export { SubmitComponent } from './submit.component';
 export { TabComponent } from './tab.component';
-export { TabsComponent } from './tabs.component';
 export { TemplateComponent } from './template.component';
 export { TextareaComponent } from './textarea.component';
 export { WidgetLibraryService } from './widget-library.service';

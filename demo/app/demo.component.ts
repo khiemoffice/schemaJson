@@ -3,7 +3,6 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
 import { Examples } from './example-schemas.model';
 import { JsonPointer } from '@ajsf/core';
 
@@ -196,7 +195,7 @@ export class DemoComponent implements OnInit {
     try {
       // Parse entered content as JSON
       this.jsonFormObject = JSON.parse(newFormString);
-      console.log('=======', this.jsonFormObject)
+      console.log('===jsonFormObject====', this.jsonFormObject)
       this.jsonFormValid = true;
     } catch (jsonError) {
       try {

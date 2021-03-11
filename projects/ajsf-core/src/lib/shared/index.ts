@@ -11,7 +11,7 @@ export {
 } from './validator.functions';
 
 export {
-  addClasses, copy, forEach, forEachCopy, hasOwn, mergeFilteredObject,
+  copy, forEach, forEachCopy, hasOwn, mergeFilteredObject,
   uniqueItems, commonItems, fixTitle, toTitleCase
 } from './utility.functions';
 

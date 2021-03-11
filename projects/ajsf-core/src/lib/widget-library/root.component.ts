@@ -18,10 +18,11 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
         [layoutIndex]="(layoutIndex || []).concat(i)"
         [layoutNode]="layoutItem"
         [orderable]="isDraggable(layoutItem)">
-        <select-framework-widget *ngIf="showWidget(layoutItem)"
+        <select-widget-widget *ngIf="showWidget(layoutItem)"
           [dataIndex]="layoutItem?.arrayItem ? (dataIndex || []).concat(i) : (dataIndex || [])"
           [layoutIndex]="(layoutIndex || []).concat(i)"
-          [layoutNode]="layoutItem"></select-framework-widget>
+          [layoutNode]="layoutItem">
+          </select-widget-widget>
       </div>
     </div>`,
   styles: [`
@@ -60,7 +61,7 @@ export class RootComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-    console.log('============', this.layout)
+    console.log('=====layout in root widget=======', this.layout)
   }
 
   isDraggable(node: any): boolean {

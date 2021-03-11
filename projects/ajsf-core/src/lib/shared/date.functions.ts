@@ -1,4 +1,4 @@
-import { longDays, longMonths, shortDays, shortMonths } from '../locale-dates/en-US';
+// import { longDays, longMonths, shortDays, shortMonths } from '../locale-dates/en-US';
 
 /**
  *
@@ -20,12 +20,12 @@ export function dateToString(date: string | Date, options: any = {}): string {
     .replace(/S/g, getOrdinal(day))
     .replace(/YYYY/g, year)
     .replace(/YY/g, year.slice(-2))
-    .replace(/MMMM/g, longMonths[month])
-    .replace(/MMM/g, shortMonths[month])
+    // .replace(/MMMM/g, longMonths[month])
+    // .replace(/MMM/g, shortMonths[month])
     .replace(/MM/g, ('0' + (month + 1)).slice(-2))
     .replace(/M/g, month + 1)
-    .replace(/DDDD/g, longDays[dayOfWeek])
-    .replace(/DDD/g, shortDays[dayOfWeek])
+    // .replace(/DDDD/g, longDays[dayOfWeek])
+    // .replace(/DDD/g, shortDays[dayOfWeek])
     .replace(/DD/g, ('0' + day).slice(-2))
     .replace(/D/g, day);
 }

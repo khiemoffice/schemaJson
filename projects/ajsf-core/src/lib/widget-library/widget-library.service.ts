@@ -14,7 +14,7 @@ import { RadiosComponent } from './radios.component';
 import { RootComponent } from './root.component';
 import { SectionComponent } from './section.component';
 import { SelectComponent } from './select.component';
-import { SelectFrameworkComponent } from './select-framework.component';
+// import { SelectFrameworkComponent } from './select-framework.component';
 import { SelectWidgetComponent } from './select-widget.component';
 import { SubmitComponent } from './submit.component';
 import { TemplateComponent } from './template.component';
@@ -31,7 +31,7 @@ export class WidgetLibraryService {
   // Angular JSON Schema Form administrative widgets
     'none': NoneComponent, // Placeholder, for development - displays nothing
     'root': RootComponent, // Form root, renders a complete layout
-    'select-framework': SelectFrameworkComponent, // Applies the selected framework to a specified widget
+    // 'select-framework': SelectFrameworkComponent, // Applies the selected framework to a specified widget
     'select-widget': SelectWidgetComponent, // Displays a specified widget
     '$ref': AddReferenceComponent, // Button to add a new array item or $ref element
 
@@ -136,7 +136,7 @@ export class WidgetLibraryService {
     // 'quill': Quill HTML / rich text editor (?) - https://quilljs.com
   };
   registeredWidgets: any = { };
-  frameworkWidgets: any = { };
+  // frameworkWidgets: any = { };
   activeWidgets: any = { };
 
   constructor() {
@@ -145,7 +145,9 @@ export class WidgetLibraryService {
 
   setActiveWidgets(): boolean {
     this.activeWidgets = Object.assign(
-      { }, this.widgetLibrary, this.frameworkWidgets, this.registeredWidgets
+      { }, this.widgetLibrary,
+      // this.frameworkWidgets,
+      this.registeredWidgets
     );
     for (const widgetName of Object.keys(this.activeWidgets)) {
       let widget: any = this.activeWidgets[widgetName];
@@ -193,21 +195,21 @@ export class WidgetLibraryService {
 
   unRegisterAllWidgets(unRegisterFrameworkWidgets = true): boolean {
     this.registeredWidgets = { };
-    if (unRegisterFrameworkWidgets) { this.frameworkWidgets = { }; }
+    // if (unRegisterFrameworkWidgets) { this.frameworkWidgets = { }; }
     return this.setActiveWidgets();
   }
 
   registerFrameworkWidgets(widgets: any): boolean {
     if (widgets === null || typeof widgets !== 'object') { widgets = { }; }
-    this.frameworkWidgets = widgets;
+    // this.frameworkWidgets = widgets;
     return this.setActiveWidgets();
   }
 
   unRegisterFrameworkWidgets(): boolean {
-    if (Object.keys(this.frameworkWidgets).length) {
-      this.frameworkWidgets = { };
-      return this.setActiveWidgets();
-    }
+    // if (Object.keys(this.frameworkWidgets).length) {
+    //   this.frameworkWidgets = { };
+    //   return this.setActiveWidgets();
+    // }
     return false;
   }
 
@@ -225,7 +227,7 @@ export class WidgetLibraryService {
     return {
       widgetLibrary: this.widgetLibrary,
       registeredWidgets: this.registeredWidgets,
-      frameworkWidgets: this.frameworkWidgets,
+      // frameworkWidgets: this.frameworkWidgets,
       activeWidgets: this.activeWidgets,
     };
   }

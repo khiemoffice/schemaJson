@@ -25,16 +25,7 @@ import {
   isObject,
   JsonPointer
 } from './shared';
-import {
-  deValidationMessages,
-  enValidationMessages,
-  esValidationMessages,
-  frValidationMessages,
-  itValidationMessages,
-  ptValidationMessages,
-  zhValidationMessages
-} from './locale';
-
+import { enValidationMessages } from './en-validation-messages';
 
 export interface TitleMapItem {
   name?: string;
@@ -152,18 +143,7 @@ export class JsonSchemaFormService {
 
   setLanguage(language: string = 'en-US') {
     this.language = language;
-    const languageValidationMessages = {
-      de: deValidationMessages,
-      en: enValidationMessages,
-      es: esValidationMessages,
-      fr: frValidationMessages,
-      it: itValidationMessages,
-      pt: ptValidationMessages,
-      zh: zhValidationMessages,
-    };
-    const languageCode = language.slice(0, 2);
-
-    const validationMessages = languageValidationMessages[languageCode];
+    const validationMessages = enValidationMessages;
 
     this.defaultFormOptions.defautWidgetOptions.validationMessages = cloneDeep(
       validationMessages
@@ -295,6 +275,7 @@ export class JsonSchemaFormService {
 
   buildLayout(widgetLibrary: any) {
     this.layout = buildLayout(this, widgetLibrary);
+    console.log('buildLayout', widgetLibrary, this.layout);
   }
 
   setOptions(newOptions: any) {

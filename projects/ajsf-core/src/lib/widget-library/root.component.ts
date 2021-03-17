@@ -4,7 +4,7 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'root-widget',
+  selector: 'ipe-container',
   template: `
     <div *ngFor="let layoutItem of layout; let i = index"
       [class.form-flex-item]="isFlexItem"

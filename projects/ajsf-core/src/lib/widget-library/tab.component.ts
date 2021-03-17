@@ -7,10 +7,10 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
   selector: 'tab-widget',
   template: `
     <div [class]="options?.htmlClass || ''">
-      <root-widget
+      <ipe-container
         [dataIndex]="dataIndex"
         [layoutIndex]="layoutIndex"
-        [layout]="layoutNode.items"></root-widget>
+        [layout]="layoutNode.items"></ipe-container>
     </div>`,
 })
 export class TabComponent implements OnInit {

@@ -15,7 +15,7 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
         [class]="options?.labelHtmlClass || ''"
         [innerHTML]="sectionTitle"
         (click)="toggleExpanded()"></label>
-      <root-widget *ngIf="expanded"
+      <ipe-container *ngIf="expanded"
         [dataIndex]="dataIndex"
         [layout]="layoutNode.items"
         [layoutIndex]="layoutIndex"
@@ -28,7 +28,7 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
         [style.display]="getFlexAttribute('display')"
         [style.flex-direction]="getFlexAttribute('flex-direction')"
         [style.flex-wrap]="getFlexAttribute('flex-wrap')"
-        [style.justify-content]="getFlexAttribute('justify-content')"></root-widget>
+        [style.justify-content]="getFlexAttribute('justify-content')"></ipe-container>
     </div>
     <fieldset *ngIf="containerType === 'fieldset'"
       [class]="options?.htmlClass || ''"
@@ -46,7 +46,7 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
         [class]="options?.labelHelpBlockClass || ''"
         [innerHTML]="options?.description"></p>
       </div>
-      <root-widget *ngIf="expanded"
+      <ipe-container *ngIf="expanded"
         [dataIndex]="dataIndex"
         [layout]="layoutNode.items"
         [layoutIndex]="layoutIndex"
@@ -59,7 +59,7 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
         [style.display]="getFlexAttribute('display')"
         [style.flex-direction]="getFlexAttribute('flex-direction')"
         [style.flex-wrap]="getFlexAttribute('flex-wrap')"
-        [style.justify-content]="getFlexAttribute('justify-content')"></root-widget>
+        [style.justify-content]="getFlexAttribute('justify-content')"></ipe-container>
       <div *ngIf="options?.messageLocation === 'bottom'">
         <p *ngIf="options?.description"
         class="help-block"

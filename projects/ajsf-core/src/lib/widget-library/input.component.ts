@@ -67,6 +67,9 @@ export class InputComponent implements OnInit {
 
   ngOnInit() {
     this.options = this.layoutNode.options || {};
+    console.log('layoutNode:', this.layoutNode);
+    console.log('layoutIndex:', this.layoutIndex)
+    console.log('dataIndex:', this.dataIndex)
     this.jsf.initializeControl(this);
   }
 

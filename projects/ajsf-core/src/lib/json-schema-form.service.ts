@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import cloneDeep from 'lodash/cloneDeep';
-import Ajv from 'ajv';
+// import Ajv from 'ajv';
 import jsonDraft6 from 'ajv/lib/refs/json-schema-draft-06.json';
 import {
   buildFormGroup,
@@ -50,13 +50,13 @@ export class JsonSchemaFormService {
   AngularSchemaFormCompatibility = false;
   tpldata: any = {};
 
-  ajvOptions: any = {
-    allErrors: true,
-    jsonPointers: true,
-    unknownFormats: 'ignore'
-  };
-  ajv: any = new Ajv(this.ajvOptions); // AJV: Another JSON Schema Validator
-  validateFormData: any = null; // Compiled AJV function to validate active form's schema
+  // ajvOptions: any = {
+  //   allErrors: true,
+  //   jsonPointers: true,
+  //   unknownFormats: 'ignore'
+  // };
+  // ajv: any = new Ajv(this.ajvOptions); // AJV: Another JSON Schema Validator
+  // validateFormData: any = null; // Compiled AJV function to validate active form's schema
 
   formValues: any = {}; // Internal form data (may not have correct types)
   data: any = {}; // Output form data (formValues, formatted with correct data types)
@@ -69,7 +69,7 @@ export class JsonSchemaFormService {
 
   validData: any = null; // Valid form data (or null) (=== isValid ? data : null)
   isValid: boolean = null; // Is current form data valid?
-  ajvErrors: any = null; // Ajv errors for current data
+  // ajvErrors: any = null; // Ajv errors for current data
   validationErrors: any = null; // Any validation errors for current data
   dataErrors: any = new Map(); //
   formValueSubscription: any = null; // Subscription to formGroup.valueChanges observable (for un- and re-subscribing)
@@ -138,7 +138,7 @@ export class JsonSchemaFormService {
 
   constructor() {
     this.setLanguage(this.language);
-    this.ajv.addMetaSchema(jsonDraft6);
+    // this.ajv.addMetaSchema(jsonDraft6);
   }
 
   setLanguage(language: string = 'en-US') {
@@ -167,7 +167,7 @@ export class JsonSchemaFormService {
     this.ReactJsonSchemaFormCompatibility = false;
     this.AngularSchemaFormCompatibility = false;
     this.tpldata = {};
-    this.validateFormData = null;
+    // this.validateFormData = null;
     this.formValues = {};
     this.schema = {};
     this.layout = [];
@@ -228,24 +228,10 @@ export class JsonSchemaFormService {
       this.arrayMap,
       this.formOptions.returnEmptyFields
     );
-    this.isValid = this.validateFormData(this.data);
     this.validData = this.isValid ? this.data : null;
-    const compileErrors = errors => {
-      const compiledErrors = {};
-      (errors || []).forEach(error => {
-        if (!compiledErrors[error.dataPath]) {
-          compiledErrors[error.dataPath] = [];
-        }
-        compiledErrors[error.dataPath].push(error.message);
-      });
-      return compiledErrors;
-    };
-    this.ajvErrors = this.validateFormData.errors;
-    this.validationErrors = compileErrors(this.validateFormData.errors);
     if (updateSubscriptions) {
       this.dataChanges.next(this.data);
       this.isValidChanges.next(this.isValid);
-      this.validationErrorChanges.next(this.ajvErrors);
     }
   }
 
@@ -260,7 +246,7 @@ export class JsonSchemaFormService {
   buildFormGroup() {
     this.formGroup = <FormGroup>buildFormGroup(this.formGroupTemplate);
     if (this.formGroup) {
-      this.compileAjvSchema();
+      // this.compileAjvSchema();
       this.validateData(this.formGroup.value);
 
       // Set up observables to emit data and validation info when form data changes
@@ -275,7 +261,6 @@ export class JsonSchemaFormService {
 
   buildLayout(widgetLibrary: any) {
     this.layout = buildLayout(this, widgetLibrary);
-    console.log('buildLayout', widgetLibrary, this.layout);
   }
 
   setOptions(newOptions: any) {
@@ -311,17 +296,17 @@ export class JsonSchemaFormService {
     }
   }
 
-  compileAjvSchema() {
-    if (!this.validateFormData) {
-      // if 'ui:order' exists in properties, move it to root before compiling with ajv
-      if (Array.isArray(this.schema.properties['ui:order'])) {
-        this.schema['ui:order'] = this.schema.properties['ui:order'];
-        delete this.schema.properties['ui:order'];
-      }
-      this.ajv.removeSchema(this.schema);
-      this.validateFormData = this.ajv.compile(this.schema);
-    }
-  }
+  // compileAjvSchema() {
+  //   if (!this.validateFormData) {
+  //     // if 'ui:order' exists in properties, move it to root before compiling with ajv
+  //     if (Array.isArray(this.schema.properties['ui:order'])) {
+  //       this.schema['ui:order'] = this.schema.properties['ui:order'];
+  //       delete this.schema.properties['ui:order'];
+  //     }
+  //     // this.ajv.removeSchema(this.schema);
+  //     this.validateFormData = this.ajv.compile(this.schema);
+  //   }
+  // }
 
   buildSchemaFromData(data?: any, requireAllFields = false): any {
     if (data) {
